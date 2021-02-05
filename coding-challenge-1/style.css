@@ -1,0 +1,16 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+input {
+    width: 10vw;
+    display: inline;
+}
+  
+button{
+    width:5rem;
+}
+label {
+    width: 2rem;
+    display: inline-block;
+}
