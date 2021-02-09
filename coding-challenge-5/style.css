@@ -1,0 +1,18 @@
+#next{
+    float:right;
+    position: absolute;
+    top:50%;
+    right: 0%;
+}
+#previous{
+    float:left;
+    position: absolute;
+    top: 50% ;
+    left: 0%;
+}
+
+img{
+    max-height: 20rem;
+    display:block;
+    margin-left: 40%;
+}
