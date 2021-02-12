@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>coding challenge 7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.25">
+        <meta name="keywords" content="coding challenge">
+        <meta name="description" content="this is my seventh coding challenge">
+    </head>
+    <body>
+        <h1>Coding Challenge 7</h1>
+        <h2>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+            You may assume that each input would have exactly one solution, and you may not use the same element twice.
+            
+            You can return the answer in any order.
+        </h2>
+        <h3>use console function twoSum([array of numbers],target-number)</h3>
+        <p>Developer notes: seemingly pretty simple, i actually spent almost an hour and half on this problem, frustratingly enough. The issue i was having was based on the limitations of certain array methods that i tried to make work.</p>
+
+        <p>Most specifically, arr.indexOf() has an issue where it will only EVER return the first instance of an array element that matches that value.
+        so in the instance of the array ([7,5,7],14), it would return [0,0] rather than [0,2] because they are both of the value 7.</p>
+        <p>So to circumvent this i created an index of the indeces of every item in the array of numbers, then i created a for loop that would compare the item of every single item by cycling through the index.
+    this is the method i used to keep account of every item in the array. next, i created a loop within that that goes through each item in the array as well.</p>
+    <p>if the variables i created, i and j, representing the index of the number i'm testing vs. every other number in the array, are the same, it means we are on the same element, and it will return a null result. otherwise, it will test if their sum equals the target, if so it will return the value of the index of the number being tested </p>
+    <p>future answer? i think there may be a more efficient way to implement it using array.filter() where i simply include the index number in the parameters x,i. even if x values are the same, i values in the manner will always return correct of the particular element it is executing. i could probably instantly push those values to an index, and do the same thing</p>
+        <script src="main.js"></script>
+    </body>
+</html>
