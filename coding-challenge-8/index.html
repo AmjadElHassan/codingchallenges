@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>coding challenge 8</title>
+        <meta name="description" content="daily coding challenge 8">
+        <meta name="viewport" content="width=device-width">
+        <meta neme="keywords" content="coding">
+        <link rel="#">
+    </head>
+    <body>
+        <h1>coding challenge 8</h1>
+        <h2>Question</h2>
+        <p>our goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+            <br>It should remove all values from list a, which are present in list b.
+            
+            arrayDiff([1,2],[1]) == [2]
+            <br>If a value is present in b, all of its occurrences must be removed from the other:
+            
+            arrayDiff([1,2,2,2,3],[2]) == [1,3]</p>
+        <script src="main.js"></script>
+        <h3>organizational update!</h3>
+        <p>I will begin making it a habit to reflect on my overall impressions on each challenge, but in terms of specific reasoning and concepts:<br>please explore the sources tab in dev-tools and view the js file directly as I am also making it just a consitent habit to annotate my code with pseudocode explaining my logic as I go along.<br></p>
+        <h3>Developer notes</h3> 
+        <p>anyhow, I thought this challenge was okay. I basically used a similar approach to the previous coding-challenge, but as you can see I found a more efficient best practice and wrote it out in the js file. <br>How simple the best practice is made me reconsider if I could rewrite yesterdays coding challenge in such an eloquent way. Upon further consideration, I do not think i could rework this solution to provide a more eloquent solution for coding-challenge-7, because unlike coding-challenge 7 I was not required to return the index of removed array elements. if I were to use the filter method here, I would not be able to return the original index positions of the array elements that I had spliced.
+            <br><br> For future reference I will make note, if I do NOT need to return element indices and simply cutting out certain values or properties where position does not matter, to immediatly consider a filter method option</p>
+    </body>
+</html>
