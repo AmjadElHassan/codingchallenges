@@ -1,0 +1,31 @@
+<!doctype html>
+
+<head>
+    <title>coding challenge 9</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="this is my 9th coding challenge">
+    <meta name="keywords" content="coding,challenge">
+</head>
+
+<body>
+    <h1>Coding Challenge 9</h1>
+    <p>Question:<br>Write a function that takes a string of braces, and determines if the order of the braces is valid.
+        It should return true if the string is valid, and false if it's invalid.
+
+        This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces
+        {}. Thanks to @arnedag for the idea!
+
+        All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+        What is considered Valid?
+        A string of braces is considered valid if all braces are matched with the correct brace.
+    </p>
+    <h2>Developer Notes</h2>
+    <p>God these are starting to kill me, but I feel I am getting more adept at navigating multiple for-loops and if statements, and slowly i parse out multiple ideas that don't work until I arrive at the best 1, which ironically is almost always less complicated than I think, Jeez.
+        the tricky bit with this whole exercise is that i needed to find a way to evaluate if the braces are nested in a logical way. i arrived at the best answer being to simply constantly remove the adjacent matching braces constanly until there were no more matching braces left.
+        At this point, if there are any braces left in the string, i'll know that it is improperly nested fo-sho'.
+        <br>my best practice of the code manifests this same method but much more eloquently. I set a while loop to run if the text input contained any of the adjacent matching braces and then used the replace() method to alter the string to replace any matching pair with (""). it will run for multiple rounds until no pairs exist in the string.
+        then i simply ask the script to return the statement that the length of the string is 0. if it is, it gives me true, if it isn't then its false. this works because a length of 0 is the only way a valid string of braces would be processed in the while Loop.
+    </p>
+    <script src="main.js"></script>
+</body>
