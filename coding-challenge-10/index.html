@@ -16,6 +16,9 @@
 
     <div class="clock">
       <div class="clock-face">
+        <div class="origin">
+          <img src="beachball.png" alt="beachball">
+        </div>
         <div class="hand hour-hand">
           <div class="circle">
             <img src="hour.png" alt="hour hand">
@@ -55,7 +58,7 @@
     }
 
     .clock {
-      background: url('pool.jpg');
+      background: url('https://images.squarespace-cdn.com/content/v1/56f0511af699bb84799b5e7f/1510074427117-UPXUT73BZ2VWD8FNFOYQ/ke17ZwdGBToddI8pDm48kN_ZoNdj1kv_gIvm4zjH76N7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8AelHsSihC3tfiYK1eHEM7W3AVjJQSBul2wE-DqW7dygg/FB82.jpg?format=1500w');
       background-size: 145%;
       background-position: 44.3% 33%;
       width: 70rem;
@@ -70,7 +73,15 @@
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
     }
-
+    .origin{
+      height:40px;
+      width: 40px;
+      position: absolute;
+      margin: 48% 47.2%;
+    }
+    .origin img{
+      max-width: 100%;
+    }
     .clock-face {
       position: relative;
       width: 100%;
@@ -82,7 +93,7 @@
       width: 30%;
       left:  20%;
       height: 6px;
-      background: white;
+      /* background: white; */
       position: absolute;
       top: 50%;/*we need to transform the origin so it can rotate around the end of a clock hand, and not by the center*/
       transform-origin: 100%;
