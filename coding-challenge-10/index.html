@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+  <h1>Coding Challenge 10: JS-30 day-2 freestyle</h1>
+  <p>my challenge today was to switch it up with a bit more of a creative venture. so i did the day 2 js clock from js30 but i coded it my own way as well as really added my own sort of beach day flavor to the plain clock</p>
+  <p>the thought started with me wondering how i could express a minimalist clocks with varying circles representing the hands isntead of the traditional arms, and that eventually lead to this pool theme with different swimmers in tubes as different arms of the clock</p>
+  <p>fun project, but i kept the arms in place, because when the different swimmers r in different spots, and facing differnt directions it can be a little disorienting when you're just trying to read a watch.</p>
+  <p>I could easily circumvent this by perhaps photoshopping in either a beachball with sun glare or perhaps a pool drain to represent the origin of the watch and thereby give users the point of reference to read the time without sacrificng style of a handless watch</p>
+  <p>there is some quality of life changes i made to the original project's code that I think would lead to a more reliable clock</p>
+  <p>be aware that the js is actually written directly into the html for this project</p>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand">
+          <div class="circle">
+            <img src="hour.png" alt="hour hand">
+          </div>
+        </div>
+        <div class="hand min-hand">
+          <div class="circle">
+            <img src="minute.png" alt="minute hand">
+          </div>
+        </div>
+        <div class="hand second-hand">
+          <div class="circle">
+            <img src="second.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      background: url('pool.jpg');
+      background-size: 145%;
+      background-position: 44.3% 33%;
+      width: 70rem;
+      height: 70rem;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 30%;
+      left:  20%;
+      height: 6px;
+      background: white;
+      position: absolute;
+      top: 50%;/*we need to transform the origin so it can rotate around the end of a clock hand, and not by the center*/
+      transform-origin: 100%;
+      /*i need the hands to "start" at 12:00 o clock */
+      transform: rotate(90deg);
+      transition: all 2s;/*gives an amount of to transition when a change in rotation occurs*/
+    }
+    .hour-hand{ /*hour hand should be shortest radius*/
+      width: 15%;
+      left:35%;
+    }
+    .second-hand{ /*the seconds hand should be about the same radius as the minutes hand, but a thinner arm, which i will translate with a smaller circle*/
+      height: 2px;
+      width: 50%;
+      left:0;
+    }
+    .min-hand{
+      height: 5px;
+    }
+    .circle{
+      width: 150px;
+      height: 150px;
+      position:relative;
+      bottom: 65px;
+      right: 120px;
+      transform:rotate(-5deg)
+    }
+    .circle img{
+      max-width: 100%;
+    }
+    .hour-hand .circle{
+      right:100px;
+      width: 180px;
+      height: 180px;
+      bottom: 42px;
+      transform:rotate(28deg)
+    }
+    .second-hand .circle{
+      width: 30px;
+      height: 30px;
+      bottom: 15px;
+      right:0;
+      transform: rotate(90deg)
+    }
+
+  </style>
+
+
+  <script>
+    function syncArms(){
+      const now = new Date()
+      let seconds = ((now.getSeconds())*6)//the 6 represents 360degress/60minutes
+      let minutes = (now.getMinutes()*6)
+      let hours = now.getHours()
+      if (hours>12){
+        hours = (hours-12)*30
+      } else {
+        hours*=30
+      }
+      //so multi issues here. first is that the time receivived is military time. have to correct for this. 2.) my issue with this is that this will cause the hour hand to simply just zoop and stay on an hour the entire time isntead of slowly incrementing across the hour. so to circumvent this, i will need to add the fraction of the minutes into hours and add that to this function, and that will give us a non-whole number hour we can express, or i could make a more fool proof item, by resyncing every few minutes, just so degree counter doesn't get that high
+      
+      document.querySelector('.min-hand').style.transform = `rotate(${minutes+90}deg)`
+      document.querySelector('.second-hand').style.transform = `rotate(${seconds+90}deg)`
+      document.querySelector('.hour-hand').style.transform = `rotate(${hours+90}deg)`
+      console.log(now)
+    }
+        //so what i'm doing up here is EVERYSINGLE TIME the program runs, it is re-updating everything with server. issue with this is i get problems where when values equal 0, i get some crazy watch movement. what would be better is when the page is loaded to sync time once, and then simply add 1 degree difference of a second for each hand
+
+
+    syncArms();
+
+    function addTime(){
+      let seconds = document.querySelector('.second-hand').style.transform
+      let secondsValue = seconds.match(/[0-9]+/g)
+      let newSeconds = Number(secondsValue)+6
+      document.querySelector('.second-hand').style.transform = `rotate(${newSeconds}deg)`
+
+      let minutes = document.querySelector('.min-hand').style.transform
+      let minutesValue = minutes.match(/[0-9]+/g)
+      let newMinutes = Number(minutesValue)+(1/10)
+      document.querySelector('.min-hand').style.transform
+
+
+      let hours = document.querySelector('.hour-hand').style.transform
+      let hoursValue = hours.match(/[0-9]+/g)
+      let newHours = Number(hoursValue)+(1/120)
+      document.querySelector('.hour-hand').style.transform = `rotate(${newHours}deg)`
+
+
+
+      // let minutes = (now.getMinutes()*6)
+      // let hours = now.getHours()
+      // document.querySelector('.min-hand').style.transform = `rotate(${minutes+90}deg)`
+      // document.querySelector('.second-hand').style.transform = `rotate(${seconds+90}deg)`
+      // document.querySelector('.hour-hand').style.transform = `rotate(${hours+90}deg)`
+    }
+
+    setInterval(addTime, 1000)
+    setInterval(syncArms, 500000)//if i don't set a time for it to reset if you come back the watch dial will transition wildly to account for lost time and additionally added degrees. to make this time smaller, i'm resyncing the time every few minutes 
+
+  </script>
+
+</body>
+</html>
