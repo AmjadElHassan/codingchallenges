@@ -11,6 +11,7 @@ function birthday(){
     let month = pieces[0]
     let day = pieces[1]
     let year = pieces[2]
+    console.log((url+year+'-'+month+'-'+day))
     fetch(url+year+'-'+month+'-'+day).then(x=>x.json()).then(x=>{
         console.log(x)
         headline.innerText = x.title
