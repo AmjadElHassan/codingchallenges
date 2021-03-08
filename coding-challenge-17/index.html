@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>coding challenge 17</title>
+    <meta name="description" content="this is my 17th coding challenge">
+    <meta name="keywords" content="coding, challenge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.25">
+    <link rel='stylesheet' href="#">
+</head>
+
+<body>
+    <h1>Coding challenge 17</h1>
+    <p>question: <br>
+        All we eat is water and dry matter.
+        John bought potatoes: their weight is 100 kilograms. Potatoes contain water and dry matter.
+
+        The water content is 99 percent of the total weight. He thinks they are too wet and puts them in an oven - at
+        low temperature - for them to lose some water.
+
+        At the output the water content is only 98%.
+
+        What is the total weight in kilograms (water content plus dry matter) coming out of the oven?
+
+        He finds 50 kilograms and he thinks he made a mistake: "So much weight lost for such a small change in water
+        content!"
+
+        Can you help him?
+
+        Write function potatoes with
+
+        int parameter p0 - initial percent of water-
+        int parameter w0 - initial weight -
+        int parameter p1 - final percent of water -
+        potatoesshould return the final weight coming out of the oven w1 truncated as an int.
+
+        Example:
+        potatoes(99, 100, 98) --> 50<br>
+    </p>
+    <h2>Developer notes</h2>
+    <p>The toughest part of this one was setting up the equation before we begin writing the code. once we find the formular for final mass, we encapsulate that in a Math.floor() method.
+        <br> to determine the final weight, we multiply our initial weight w0 by the change in mass percentage, so (100-p0)/(100-p1) 
+    </p>
+    <script src="main.js"></script>
+</body>
+
+</html>
